@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
@@ -26,6 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
+@Transactional
 public class AuthControllerTest  {
   @Autowired
   private  MockMvc mvc;
@@ -57,7 +59,7 @@ public class AuthControllerTest  {
   public void testPostLoginDenied() throws Exception {
     LoginRequest loginRequest = new LoginRequest();
     loginRequest.setEmail("yoga@studio.com");
-    loginRequest.setPassword("WRONGPASSWORD");
+    loginRequest.setPassword("azeazeaze");
     String requestJson = ow.writeValueAsString(loginRequest);
     mvc.perform(post("/api/auth/login").contentType(APPLICATION_JSON_UTF8)
                     .content(requestJson))
@@ -66,7 +68,7 @@ public class AuthControllerTest  {
   @Test
   public void testRegisterSuccess() throws Exception {
     SignupRequest signupRequest = new SignupRequest();
-    signupRequest.setEmail("test1@studio.com");
+    signupRequest.setEmail("test111@studio.com");
     signupRequest.setFirstName("John");
     signupRequest.setLastName("Doe");
     signupRequest.setPassword("test!1111");
