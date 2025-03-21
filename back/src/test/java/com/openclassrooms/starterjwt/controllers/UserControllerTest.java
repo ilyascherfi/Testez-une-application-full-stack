@@ -1,6 +1,8 @@
 package com.openclassrooms.starterjwt.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.openclassrooms.starterjwt.dto.UserDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,6 +36,8 @@ class UserControllerTest {
             .andExpect(status().isOk())
             .andReturn();
     String json = result.getResponse().getContentAsString();
+    mapper.registerModule(new JavaTimeModule());
+    mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
     UserDto user = mapper.readValue(json, UserDto.class);
     assertEquals("yoga@studio.com", user.getEmail());
     assertEquals("Admin", user.getLastName());
