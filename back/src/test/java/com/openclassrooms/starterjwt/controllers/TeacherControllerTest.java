@@ -1,6 +1,8 @@
 package com.openclassrooms.starterjwt.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.openclassrooms.starterjwt.dto.TeacherDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,6 +37,8 @@ class TeacherControllerTest {
             .andExpect(status().isOk())
             .andReturn();
     String json = result.getResponse().getContentAsString();
+    mapper.registerModule(new JavaTimeModule());
+    mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
     TeacherDto teacher = mapper.readValue(json, TeacherDto.class);
     assertTrue(teacher.getLastName().equals("DELAHAYE") && teacher.getFirstName().equals("Margot"));
   }
@@ -58,6 +62,8 @@ class TeacherControllerTest {
             .andExpect(status().isOk())
             .andReturn();
     String json = result.getResponse().getContentAsString();
+    mapper.registerModule(new JavaTimeModule());
+    mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
     List<TeacherDto> teachers = mapper.readerForListOf(TeacherDto.class).readValue(json);
     assertEquals(teachers.size(), 2);
     assertTrue(teachers.get(0).getLastName().equals("DELAHAYE") && teachers.get(1).getLastName().equals("THIERCELIN"));
