@@ -110,18 +110,12 @@
 				<version>0.8.12</version>
 				<configuration>
 					<excludes>
-						<exclude>
-							com/openclassrooms/starterjwt/dto/*.*
-						</exclude>
-						<exclude>
-							com/openclassrooms/starterjwt/payload/request/*.*
-						</exclude>
-						<exclude>
-							com/openclassrooms/starterjwt/payload/response/*.*
-						</exclude>
-						<exclude>
-							com/openclassrooms/starterjwt/models/*.*
-						</exclude>
+						<exclude>**/dto/**</exclude>
+						<exclude>**/mapper/**</exclude>
+						<exclude>**/models/**</exclude>
+						<exclude>**/payload/**</exclude>
+						<exclude>**/security/WebSecurityConfig.class</exclude>
+						<exclude>**/security/services/UserDetailsImpl.class</exclude>
 					</excludes>
 				</configuration>
 				<executions>
