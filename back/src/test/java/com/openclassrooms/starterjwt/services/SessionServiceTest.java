@@ -35,7 +35,7 @@ public class SessionServiceTest {
   Session session;
   List<User> users;
   @BeforeEach
-  private void setUpperTest() {
+  public void setUpperTest() {
     sessionService = new SessionService(sessionRepository, userRepository);
     session = new Session();
   }
