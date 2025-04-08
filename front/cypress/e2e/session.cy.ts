@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 // @ts-check
-import { Session } from "./model.cy";
+import { Session } from "./model";
 describe('Sessions spec', () => {
 
     let user = {

@@ -1,4 +1,4 @@
-import { Session } from "./model.cy";
+import { Session } from "./model";
 /// <reference types="cypress" />
 // @ts-check
 describe('Me spec', () => {

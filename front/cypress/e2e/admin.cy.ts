@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { Session } from "./model.cy"
+import { Session } from "./model"
 
 // @ts-check
 describe('Session administration spec', () => {
