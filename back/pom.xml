@@ -115,7 +115,6 @@
 						<exclude>**/models/**</exclude>
 						<exclude>**/payload/**</exclude>
 						<exclude>**/security/WebSecurityConfig.class</exclude>
-						<exclude>**/security/services/UserDetailsImpl.class</exclude>
 					</excludes>
 				</configuration>
 				<executions>
